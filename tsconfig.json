@@ -1,0 +1,10 @@
+{
+  "extends": "@react-native/typescript-config",
+  "include": [
+    "api-check.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "ios/Pods"
+  ]
+}

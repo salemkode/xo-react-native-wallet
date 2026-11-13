@@ -1,0 +1,65 @@
+{
+  "name": "xo-react-native-wallet",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start --port 8097",
+    "ios": "react-native run-ios --port 8097",
+    "android": "react-native run-android --port 8097",
+    "postinstall": "libauth-native --js-only",
+    "setup:native": "libauth-native --setup && libauth-native",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "eslint App.jsx src tests/native-suite.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bitauth/libauth": "3.1.0-next.8",
+    "@callstack/polygen": "0.2.1",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "lucide-react-native": "1.72.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-get-random-values": "^1.11.0",
+    "react-native-keychain": "10.0.0",
+    "react-native-libauth": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.0/react-native-libauth-0.2.0.tgz",
+    "react-native-qrcode-svg": "6.3.15",
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-svg": "15.12.1",
+    "react-native-xo": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.0/react-native-xo-0.1.0.tgz",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "20.0.0",
+    "@react-native-community/cli-platform-android": "20.0.0",
+    "@react-native-community/cli-platform-ios": "20.0.0",
+    "@react-native/babel-preset": "0.81.5",
+    "@react-native/eslint-config": "0.81.5",
+    "@react-native/metro-config": "0.81.5",
+    "@react-native/typescript-config": "0.81.5",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.1.0",
+    "@types/react-test-renderer": "^19.1.0",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "19.1.0",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "description": "A small Bitcoin Cash React Native wallet template using XO primitives and native libauth.",
+  "allowScripts": {
+    "@callstack/polygen-cli": true,
+    "@callstack/polygen-codegen": true,
+    "@callstack/polygen-config": true,
+    "@callstack/polygen-project": true,
+    "@callstack/polygen-binary-utils": true,
+    "@callstack/wasm-parser": true,
+    "core-js": false,
+    "fsevents": true
+  }
+}

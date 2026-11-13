@@ -1,0 +1,44 @@
+# Keep the recorded accessibility gate after launch: it avoids a stale pinned native tree.
+steps:
+  - launch:
+      ios: cash.xo.wallet
+  - tool: await-ui-element
+    args:
+      condition: visible
+      selector:
+        identifier: home-receive
+      timeoutMs: 10000
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Refresh balance
+      timeout: 20000
+  - await:
+      idle: true
+  - tap:
+      id: tab-settings
+  - await:
+      visible:
+        text: Network
+  - await:
+      idle: true
+  - scroll-to:
+      target:
+        id: run-wallet-checks
+      direction: down
+  - await:
+      idle: true
+  - await:
+      visible:
+        id: run-wallet-checks
+  - await:
+      idle: true
+  - tap:
+      id: run-wallet-checks
+  - await:
+      visible:
+        text: 12/12 native wallet checks passed
+      timeout: 15000
+  - await:
+      idle: true
