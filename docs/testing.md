@@ -91,7 +91,42 @@ runs the real React Native Babel transform in a regression test.
   persistence were exercised manually. No Mainnet broadcast was made.
 - Android: arm64 debug build passes. Runtime behavior on an emulator/device is
   **not yet verified**.
-- Live funded Chipnet transfer: **not yet verified**; requires faucet funds.
+- Live funded Chipnet transfer: iOS self-payment submitted and independently
+  retrieved from the network; receipt/balance restored after restart. See below.
+
+## Live Chipnet payment
+
+On 2026-11-13, this template at commit `22d046f` used the published release
+packages (`react-native-libauth` 0.2.0 and `react-native-xo` 0.1.0) on an iOS 26.4
+simulator with React Native 0.81.5, React 19.1 and Hermes/New Architecture.
+
+The user funded a dedicated, freshly generated Chipnet account with 1,017,000
+satoshis. The receiving transaction was confirmed at height 332171. Through the
+app's normal send/review/confirmation UI, the wallet signed and submitted a
+1,000-satoshi self-payment with a 226-satoshi fee. No public fixture was funded,
+no Mainnet transaction was submitted, and no recovery phrase was inspected.
+
+Transaction:
+[`f9137bf69ac64636b99fd96668336981775975d31e0e1141ea8c750a53cf2da3`](https://chipnet.chaingraph.cash/tx/f9137bf69ac64636b99fd96668336981775975d31e0e1141ea8c750a53cf2da3).
+An independent Electrum read returned the transaction bytes, whose double SHA-256
+matched this ID, and two wallet outputs of 1,000 and 1,015,774 satoshis. After an
+app restart, the receipt remained visible and the balance was 0.01016774 BCH.
+The outgoing transaction was visible in the mempool, **not yet confirmed**, when
+checked. The [public verification record](https://github.com/salemkode/react-native-libauth/blob/HEAD/docs/chipnet-live-payment.json)
+contains the raw public transaction and network response.
+
+This proves one live manual iOS receive/sign/send/persist path. It is not Android
+runtime proof, an automated full-flow pass, or a complete port of upstream tests.
+The full Libauth/XO suite port and comparative native runtime trials remain
+unfinished in the package project.
+
+### Follow-up issues found during live verification
+
+- After a long idle period, refreshing encountered a closed Electrum connection;
+  restarting the app opened a fresh session and recovered the funded balance.
+- With a receipt or connection error visible, reconnect/refresh controls can
+  overlap the bottom navigation until the page is scrolled. Improve this layout
+  and cover reconnect recovery before claiming those cases are verified.
 
 ### Saved replay limitation
 

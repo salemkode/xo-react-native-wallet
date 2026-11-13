@@ -120,4 +120,9 @@ See [testing and current evidence](docs/testing.md) for the exact checks and
 platform limitations. The Settings → Run native wallet checks action appears
 only in development builds and never submits its fixtures to a live network.
 
+A dedicated Chipnet account also completed a live iOS self-payment: 1,000 satoshis
+sent with a 226-satoshi fee, independently found on the network, with its receipt
+and balance preserved after restart. See the [live payment evidence](docs/testing.md#live-chipnet-payment).
+This does not replace Android runtime testing or a complete upstream test-suite port.
+
 MIT license. Upstream XO/libauth and native dependencies retain their own licenses.
