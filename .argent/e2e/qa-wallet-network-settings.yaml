@@ -1,0 +1,156 @@
+# Keep the recorded accessibility gate after launch: it avoids a stale pinned native tree.
+steps:
+  - launch:
+      ios: cash.xo.wallet
+  - tool: await-ui-element
+    args:
+      condition: visible
+      selector:
+        identifier: home-receive
+      timeoutMs: 10000
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Refresh balance
+      timeout: 20000
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Chipnet · test funds
+  - await:
+      idle: true
+  - tap:
+      id: home-receive
+  - await:
+      visible:
+        text: Your receiving address
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: 'bchtest:'
+  - await:
+      idle: true
+  - tap:
+      id: tab-settings
+  - await:
+      visible:
+        text: Network
+  - await:
+      idle: true
+  - tap:
+      id: select-mainnet
+  - await:
+      visible:
+        text: Use real Bitcoin Cash?
+  - await:
+      idle: true
+  - tap:
+      text: Stay on Chipnet
+  - await:
+      hidden:
+        text: Use real Bitcoin Cash?
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Network
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Chipnet · test funds
+  - await:
+      idle: true
+  - tap:
+      id: tab-wallet
+  - await:
+      visible:
+        id: home-receive
+  - await:
+      idle: true
+  - tap:
+      id: tab-settings
+  - await:
+      visible:
+        text: Network
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Chipnet · test funds
+  - await:
+      idle: true
+  - tap:
+      id: select-mainnet
+  - await:
+      visible:
+        text: Use real Bitcoin Cash?
+  - await:
+      idle: true
+  - tap:
+      text: Switch to Mainnet
+  - await:
+      visible:
+        text: Mainnet · real BCH
+      timeout: 10000
+  - await:
+      idle: true
+  - await:
+      hidden:
+        text: Chipnet · test funds
+  - await:
+      idle: true
+  - launch:
+      ios: cash.xo.wallet
+  - await:
+      visible:
+        id: home-receive
+      timeout: 10000
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Mainnet · real BCH
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: Refresh balance
+      timeout: 20000
+  - await:
+      idle: true
+  - tap:
+      id: tab-receive
+  - await:
+      visible:
+        text: Your receiving address
+  - await:
+      idle: true
+  - await:
+      visible:
+        text: 'bitcoincash:'
+  - await:
+      idle: true
+  - tap:
+      id: tab-settings
+  - await:
+      visible:
+        text: Network
+  - await:
+      idle: true
+  - tap:
+      id: select-chipnet
+  - await:
+      visible:
+        text: Chipnet · test funds
+      timeout: 10000
+  - await:
+      idle: true
+  - await:
+      hidden:
+        text: Mainnet · real BCH
+  - await:
+      idle: true
