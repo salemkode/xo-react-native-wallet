@@ -103,6 +103,17 @@ The packages are distributed through public GitHub releases, **not the npm regis
 
 ## Scope and testing
 
+The template uses adapter 0.2.1, whose iOS crypto pod is optimized even in Debug.
+Measured simulator results, raw samples, and the remaining gap versus Node WASM
+are in the [performance report](https://github.com/salemkode/react-native-libauth/blob/HEAD/docs/performance.md).
+Browser, physical-phone, Release UI and network performance still need validation;
+do not assume identical performance across platforms.
+
+Development builds expose `globalThis.__XO_BENCHMARK__()` through the debugger.
+The workload uses public test vectors and never broadcasts or accesses the wallet account.
+It is identical to the package repository's `shared/performance.js`. Rebuild the
+iOS app after upgrading the adapter so the new compiler settings take effect.
+
 This is an experimental starter, **not an audited production wallet**. It uses
 XO's primitives layer, not the full XO Engine or its invitation/contract system.
 BIP44 paths are `m/44'/145'/0'/0/0` on Mainnet and `m/44'/1'/0'/0/0` on Chipnet.

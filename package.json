@@ -9,7 +9,7 @@
     "postinstall": "libauth-native --js-only",
     "setup:native": "libauth-native --setup && libauth-native",
     "test": "node --test tests/*.test.mjs",
-    "lint": "eslint App.jsx src tests/native-suite.js",
+    "lint": "eslint App.jsx index.js src tests/native-suite.js tests/performance*.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -21,11 +21,11 @@
     "react-native": "0.81.5",
     "react-native-get-random-values": "^1.11.0",
     "react-native-keychain": "10.0.0",
-    "react-native-libauth": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.0/react-native-libauth-0.2.0.tgz",
+    "react-native-libauth": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.1/react-native-libauth-0.2.1.tgz",
     "react-native-qrcode-svg": "6.3.15",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-svg": "15.12.1",
-    "react-native-xo": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.0/react-native-xo-0.1.0.tgz",
+    "react-native-xo": "https://github.com/salemkode/react-native-libauth/releases/download/v0.2.1/react-native-xo-0.1.1.tgz",
     "zod": "3.25.76"
   },
   "devDependencies": {
